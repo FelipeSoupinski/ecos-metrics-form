@@ -10,7 +10,7 @@ const Home = () => {
             <span>Ver Tutorial</span>
           </button>
         </Link>
-        <Link to="/questionario">
+        <Link to="/user-info">
           <button>
             <span>Responder Questionário</span>
           </button>

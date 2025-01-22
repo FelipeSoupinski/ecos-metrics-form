@@ -70,7 +70,7 @@ const Form = () => {
                 }}
                 disabled={currScenario === 0}
               >
-                <ArrowLeft width={13} height={13} /> <span>Anterior</span>
+                <ArrowLeft width={13} height={13} /> <span>Back</span>
               </button>
             </div>
             <div className="col">
@@ -83,7 +83,7 @@ const Form = () => {
                   }
                 }}
               >
-                <span>Próximo</span> <ArrowRight width={13} height={13} />
+                <span>Next</span> <ArrowRight width={13} height={13} />
               </button>
             </div>
           </div>
