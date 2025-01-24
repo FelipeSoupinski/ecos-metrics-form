@@ -1,6 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 5000;
+const port = process.env.SERVER_PORT;
+const domain = process.env.SERVER_DOMAIN;
 const db = require("./database");
 const cors = require("cors");
 
@@ -18,9 +20,9 @@ app.get("/", (req, res) => {
 });
 
 app.post("/user", (req, res) => {
-  const { name, email } = req.body;
+  const { name, email, wantResults } = req.body;
   db.run(
-    `INSERT INTO user (name, email) VALUES ('${name}', '${email}')`,
+    `INSERT INTO user (name, email, wantResults) VALUES ('${name}', '${email}', '${wantResults}')`,
     [],
     (err, rows) => {
       if (err) {
@@ -33,9 +35,9 @@ app.post("/user", (req, res) => {
 });
 
 app.post("/response", (req, res) => {
-  const { scenario, userId, value } = req.body;
+  const { scenario, userEmail, value } = req.body;
   db.run(
-    `INSERT INTO response (scenario, userId, value) VALUES ('${scenario}', '${userId}', '${value}')`,
+    `INSERT INTO response (scenario, userEmail, value) VALUES ('${scenario}', '${userEmail}', '${value}')`,
     [],
     (err, rows) => {
       if (err) {
@@ -48,5 +50,5 @@ app.post("/response", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on ${domain}:${port}`);
 });

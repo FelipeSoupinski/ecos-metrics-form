@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="home">
-      <h2>Formulário de aplicação de métricas de ECOS</h2>
+      <h2>Application of metrics by Software Ecosystem scenarios.</h2>
       <div className="button-container">
         <Link to="/form">
           <button>
-            <span>Ver Tutorial</span>
+            <span>View tutorial</span>
           </button>
         </Link>
         <Link to="/user-info">
           <button>
-            <span>Responder Questionário</span>
+            <span>Answer questionnaire</span>
           </button>
         </Link>
       </div>

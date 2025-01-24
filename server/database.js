@@ -15,13 +15,14 @@ db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS user (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
-      email TEXT NOT NULL UNIQUE
+      email TEXT NOT NULL UNIQUE,
+      wantResults BOOLEAN NOT NULL
     )`);
 
   db.run(`CREATE TABLE IF NOT EXISTS response (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             scenario INTEGER NOT NULL,
-            userId INTEGER NOT NULL,
+            userEmail TEXT NOT NULL,
             value TEXT NOT NULL
         )`);
 });

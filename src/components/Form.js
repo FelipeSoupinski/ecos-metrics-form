@@ -1,20 +1,33 @@
 import { ArrowLeft } from "@styled-icons/bootstrap/ArrowLeft";
 import { ArrowRight } from "@styled-icons/bootstrap/ArrowRight";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { healthMetricsGroups } from "../files/health-metrics-groups.js";
 import { scenariosData } from "../files/scenarios-data.js";
+import getServerUrl from "../helpers/get-server-url.js";
 import MetricsTable from "./MetricsTable";
 import Scenarios from "./Scenarios.js";
+import Warning from "./Warning.js";
 
 const Form = () => {
   const metricsRows = healthMetricsGroups;
   const scenariosRows = scenariosData;
 
+  const navigate = useNavigate();
+
   const [response, setResponse] = useState([]);
   const [currScenario, setCurrScenario] = useState(0);
 
+  const [warningControl, setWarningControl] = useState(false);
+  const [warningMsg, setWarningMsg] = useState("");
+
+  const showWarning = (message) => {
+    setWarningMsg(message);
+    setWarningControl(true);
+    setTimeout(() => setWarningControl(false), 3000);
+  };
+
   const addResponse = (item) => {
-    console.log("item", item);
     const hasResponse = response.some((res) => res.name === item.name);
     !hasResponse && setResponse([...response, item]);
   };
@@ -23,8 +36,65 @@ const Form = () => {
     setResponse(response.filter((res) => res.name !== item.name));
   };
 
+  const nextScenario = () => {
+    if (response.length === 0) {
+      showWarning("Please select at least one metric group to continue");
+      return;
+    }
+
+    const email = localStorage.getItem("email");
+
+    fetch(`${getServerUrl()}/response`, {
+      body: JSON.stringify({
+        email,
+        scenario: currScenario,
+        value: response.map((res) => res.id),
+      }),
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        if (res.status === 200 && currScenario + 1 < scenariosRows.length) {
+          setResponse([]);
+          setCurrScenario(currScenario + 1);
+        } else {
+          throw new Error(res.statusText);
+        }
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const finish = () => {
+    if (response.length === 0) {
+      showWarning("Please select at least one metric group to continue");
+      return;
+    }
+
+    const email = localStorage.getItem("email");
+
+    fetch(`${getServerUrl()}/response`, {
+      body: JSON.stringify({
+        email,
+        scenario: currScenario,
+        value: response.map((res) => res.id),
+      }),
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setResponse([]);
+          navigate("/in-the-end");
+        } else {
+          throw new Error(res.statusText);
+        }
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div className="form container">
+      <Warning message={warningMsg} show={warningControl} />
       <div className="row my-auto">
         <div className="col col-12">
           <Scenarios scenarios={scenariosRows} scenarioIndex={currScenario} />
@@ -33,8 +103,8 @@ const Form = () => {
         <div className="col col-12 mt-3">
           <div className="text-left">
             <h6>
-              Selecione os grupos de métricas que você acredita que possam
-              ajudar a medir o cenário descrito acima:
+              Select the groups of metrics that you believe can help measure the
+              scenario described above:
             </h6>
           </div>
           <MetricsTable metricsRows={metricsRows} addResponse={addResponse} />
@@ -57,8 +127,8 @@ const Form = () => {
             ))}
           </div>
         </div>
-        <div className="col col-12 d-flex mb-3 justify-content-end fixed-bottom">
-          <div className="row">
+        <div className="col col-12 d-flex mb-3 justify-content-end fixed-bottom container">
+          <div className="row mx-auto">
             <div className="col">
               <button
                 className="btn btn-large btn-light d-flex align-items-center"
@@ -74,17 +144,24 @@ const Form = () => {
               </button>
             </div>
             <div className="col">
-              <button
-                className="btn btn-large btn-light d-flex align-items-center"
-                title="next"
-                onClick={() => {
-                  if (currScenario + 1 <= scenariosData?.length - 1) {
-                    setCurrScenario(currScenario + 1);
-                  }
-                }}
-              >
-                <span>Next</span> <ArrowRight width={13} height={13} />
-              </button>
+              {currScenario < scenariosRows.length - 1 && (
+                <button
+                  className="btn btn-large btn-light d-flex align-items-center"
+                  title="next"
+                  onClick={nextScenario}
+                >
+                  <span>Next</span> <ArrowRight width={13} height={13} />
+                </button>
+              )}
+              {currScenario === scenariosRows.length - 1 && (
+                <button
+                  className="btn btn-large btn-success d-flex align-items-center"
+                  title="next"
+                  onClick={finish}
+                >
+                  <span>Finish</span> <ArrowRight width={13} height={13} />
+                </button>
+              )}
             </div>
           </div>
         </div>

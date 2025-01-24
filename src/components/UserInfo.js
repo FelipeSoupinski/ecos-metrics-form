@@ -3,12 +3,14 @@ import { ArrowRight } from "@styled-icons/bootstrap/ArrowRight";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Warning from "./Warning";
+import getServerUrl from "../helpers/get-server-url";
 
 const UserInfo = () => {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [wantResults, setWantResults] = useState(true);
 
   const [warningControl, setWarningControl] = useState(false);
   const [warningMsg, setWarningMsg] = useState("");
@@ -25,14 +27,16 @@ const UserInfo = () => {
       return;
     }
 
-    fetch("http://localhost:5000/user", {
-      body: JSON.stringify({ name, email }),
+    fetch(`${getServerUrl()}/user`, {
+      body: JSON.stringify({ name, email, wantResults }),
       method: "POST",
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => {
-        if (res.status === 200) navigate("/form");
-        else {
+        if (res.status === 200) {
+          localStorage.setItem("email", email);
+          navigate("/form");
+        } else {
           showWarning("Only one response per user is allowed.");
           return;
         }
@@ -43,7 +47,7 @@ const UserInfo = () => {
   return (
     <>
       <Warning message={warningMsg} show={warningControl} />
-      <div className="form container">
+      <div className="form container h-70">
         <div className="row my-auto">
           <div className="col col-12">
             <h2>User Information</h2>
@@ -78,13 +82,33 @@ const UserInfo = () => {
                   required
                 />
               </div>
+              <div className="input-group mt-4">
+                <input
+                  id="want-receive-results"
+                  type="checkbox"
+                  className="form-check-input"
+                  defaultChecked
+                  value={wantResults}
+                  onChange={(event) => {
+                    const newValue = event.target.checked;
+                    newValue !== wantResults && setWantResults(Boolean(event.target.checked));
+                    console.log(newValue);
+                  }}
+                />
+                <label
+                  htmlFor="want-receive-results"
+                  className="form-check-label ml10px"
+                >
+                  I want to receive the research results.
+                </label>
+              </div>
               <div className="d-flex justify-content-between mt-5">
                 <button
                   className="btn btn-secondary"
                   onClick={() => window.history.back()}
                 >
                   <ArrowLeft width={13} height={13} />
-                  Back{" "}
+                  Back
                 </button>
                 <button className="btn btn-success" onClick={() => next()}>
                   Next <ArrowRight width={13} height={13} />

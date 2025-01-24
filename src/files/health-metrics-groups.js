@@ -1,190 +1,244 @@
 export const healthMetricsGroups = [
   {
-    "name": "Contributors and Active Developers",
-    "definition": "Total de contribuidores e desenvolvedores ativos por projeto"
+    id: 1,
+    name: "Contributors and Active Developers",
+    definition: "Total contributors and active developers per project",
   },
   {
-    "name": "Variety Metrics",
-    "definition": "Variedade em produtos, projetos, tecnologias, parceiros e contribuidores"
+    id: 2,
+    name: "Variety Metrics",
+    definition:
+      "Variety in products, projects, technologies, partners, and contributors",
   },
   {
-    "name": "Centrality and Connectedness",
-    "definition": "Métricas de centralidade e conectividade no ecossistema"
+    id: 3,
+    name: "Centrality and Connectedness",
+    definition: "Metrics of centrality and connectedness in the ecosystem",
   },
   {
-    "name": "Lines of Code Metrics",
-    "definition": "Métricas relacionadas a alterações em linhas de código (adicionadas, removidas, alteradas)"
+    id: 4,
+    name: "Lines of Code Metrics",
+    definition:
+      "Metrics related to changes in lines of code (added, removed, changed)",
   },
   {
-    "name": "Community Communication",
-    "definition": "Atividade e responsividade nas listas de discussão e comunicação"
+    id: 5,
+    name: "Community Communication",
+    definition:
+      "Activity and responsiveness in discussion lists and communication",
   },
   {
-    "name": "Bug Tracking",
-    "definition": "Atividade e tempo de resposta no rastreamento de bugs"
+    id: 6,
+    name: "Bug Tracking",
+    definition: "Activity and response time in bug tracking",
   },
   {
-    "name": "Community Contribution",
-    "definition": "Métricas de esforço e contribuição da comunidade"
+    id: 7,
+    name: "Community Contribution",
+    definition: "Metrics of community effort and contribution",
   },
   {
-    "name": "Total Factor Productivity",
-    "definition": "Produtividade total dos fatores e melhorias ao longo do tempo"
+    id: 8,
+    name: "Total Factor Productivity",
+    definition: "Total factor productivity and improvements over time",
   },
   {
-    "name": "Network Resources",
-    "definition": "Métricas relacionadas à rede de colaboração e recursos"
+    id: 9,
+    name: "Network Resources",
+    definition: "Metrics related to the collaboration network and resources",
   },
   {
-    "name": "Project Lifecycle",
-    "definition": "Métricas relacionadas ao ciclo de vida, abandono e revitalização"
+    id: 10,
+    name: "Project Lifecycle",
+    definition: "Metrics related to lifecycle, abandonment, and revitalization",
   },
   {
-    "name": "Repository Metrics",
-    "definition": "Métricas relacionadas a repositórios"
+    id: 11,
+    name: "Repository Metrics",
+    definition: "Metrics related to repositories",
   },
   {
-    "name": "Number of Commits",
-    "definition": "Número total de commits contendo código fonte documentação e tradução"
+    id: 12,
+    name: "Number of Commits",
+    definition:
+      "Total number of commits containing source code, documentation, and translation",
   },
   {
-    "name": "Market Share and Activity",
-    "definition": "Participação de mercado e atividade como indicadores de robustez"
+    id: 13,
+    name: "Market Share and Activity",
+    definition: "Market share and activity as indicators of robustness",
   },
   {
-    "name": "Financial Health",
-    "definition": "Métricas de saúde financeira, solvência e participação financeira"
+    id: 14,
+    name: "Financial Health",
+    definition:
+      "Metrics of financial health, solvency, and financial participation",
   },
   {
-    "name": "Ecosystem Connections",
-    "definition": "Conexões entre ecossistemas e parcerias"
+    id: 15,
+    name: "Ecosystem Connections",
+    definition: "Connections between ecosystems and partnerships",
   },
   {
-    "name": "Downloads and Usage",
-    "definition": "Número de downloads e uso do software"
+    id: 16,
+    name: "Downloads and Usage",
+    definition: "Number of downloads and software usage",
   },
   {
-    "name": "Satisfaction and Rating",
-    "definition": "Satisfação, reputação e avaliações"
+    id: 17,
+    name: "Satisfaction and Rating",
+    definition: "Satisfaction, reputation, and ratings",
   },
   {
-    "name": "Ecosystem Structure",
-    "definition": "Estrutura, previsibilidade e persistência do ecossistema"
+    id: 18,
+    name: "Ecosystem Structure",
+    definition: "Structure, predictability, and persistence of the ecosystem",
   },
   {
-    "name": "Extension Metrics",
-    "definition": "Métricas relacionadas a extensões"
+    id: 19,
+    name: "Extension Metrics",
+    definition: "Metrics related to extensions",
   },
   {
-    "name": "Knowledge Creation",
-    "definition": "Criação e qualidade de conhecimento e artefatos"
+    id: 20,
+    name: "Knowledge Creation",
+    definition: "Creation and quality of knowledge and artifacts",
   },
   {
-    "name": "User Base",
-    "definition": "Base de usuários e interesse"
+    id: 21,
+    name: "User Base",
+    definition: "User base and interest",
   },
   {
-    "name": "Developer Experience",
-    "definition": "Experiência e atividade dos desenvolvedores"
+    id: 22,
+    name: "Developer Experience",
+    definition: "Developer experience and activity",
   },
   {
-    "name": "Files Changed",
-    "definition": "Número de arquivos que foram alterados ou total de arquivos no projeto"
+    id: 23,
+    name: "Files Changed",
+    definition:
+      "Number of files that were changed or total files in the project",
   },
   {
-    "name": "Value Creation",
-    "definition": "Criação de valor no ecossistema"
+    id: 24,
+    name: "Value Creation",
+    definition: "Value creation in the ecosystem",
   },
   {
-    "name": "New Members",
-    "definition": "Novos membros, desenvolvedores e clientes"
+    id: 25,
+    name: "New Members",
+    definition: "New members, developers, and customers",
   },
   {
-    "name": "Update and Maintenance",
-    "definition": "Atualização e manutenção de módulos"
+    id: 26,
+    name: "Update and Maintenance",
+    definition: "Update and maintenance of modules",
   },
   {
-    "name": "Community Health",
-    "definition": "Saúde e diversidade da comunidade"
+    id: 27,
+    name: "Community Health",
+    definition: "Community health and diversity",
   },
   {
-    "name": "Costs",
-    "definition": "Custos de mudança, manutenção e operação"
+    id: 28,
+    name: "Costs",
+    definition: "Costs of change, maintenance, and operation",
   },
   {
-    "name": "Platform Metrics",
-    "definition": "Findability, visibilidade e crescimento da plataforma"
+    id: 29,
+    name: "Platform Metrics",
+    definition: "Findability, visibility, and platform growth",
   },
   {
-    "name": "Organizational Metrics",
-    "definition": "Maturidade organizacional e estabilidade"
+    id: 30,
+    name: "Organizational Metrics",
+    definition: "Organizational maturity and stability",
   },
   {
-    "name": "Community Activity Rate",
-    "definition": "Taxa de atividade da comunidade"
+    id: 31,
+    name: "Community Activity Rate",
+    definition: "Community activity rate",
   },
   {
-    "name": "Activity Visualization",
-    "definition": "Visualizações de atividade de projetos e desenvolvedores"
+    id: 32,
+    name: "Activity Visualization",
+    definition: "Visualizations of project and developer activity",
   },
   {
-    "name": "Security and Stability",
-    "definition": "Indicadores de segurança e estabilidade"
+    id: 33,
+    name: "Security and Stability",
+    definition: "Indicators of security and stability",
   },
   {
-    "name": "Event Metrics",
-    "definition": "Eventos e participação"
+    id: 34,
+    name: "Event Metrics",
+    definition: "Events and participation",
   },
   {
-    "name": "Web Presence",
-    "definition": "Presença e visibilidade web"
+    id: 35,
+    name: "Web Presence",
+    definition: "Web presence and visibility",
   },
   {
-    "name": "Developer Retention",
-    "definition": "Retenção e atividade de desenvolvedores"
+    id: 36,
+    name: "Developer Retention",
+    definition: "Developer retention and activity",
   },
   {
-    "name": "Release Activity",
-    "definition": "Atividade de releases"
+    id: 37,
+    name: "Release Activity",
+    definition: "Release activity",
   },
   {
-    "name": "Innovation and Evolution",
-    "definition": "Entrega e medição de inovação"
+    id: 38,
+    name: "Innovation and Evolution",
+    definition: "Delivery and measurement of innovation",
   },
   {
-    "name": "Language Support",
-    "definition": "Suporte a idiomas"
+    id: 39,
+    name: "Language Support",
+    definition: "Language support",
   },
   {
-    "name": "Switching Costs",
-    "definition": "Custos de mudança para alternativas"
+    id: 40,
+    name: "Switching Costs",
+    definition: "Costs of switching to alternatives",
   },
   {
-    "name": "Developer Collaboration",
-    "definition": "Colaboração entre desenvolvedores"
+    id: 41,
+    name: "Developer Collaboration",
+    definition: "Collaboration among developers",
   },
   {
-    "name": "Node Metrics",
-    "definition": "Métricas de nós e experiência de uso"
+    id: 42,
+    name: "Node Metrics",
+    definition: "Node metrics and user experience",
   },
   {
-    "name": "Compatibility",
-    "definition": "Compatibilidade entre componentes"
+    id: 43,
+    name: "Compatibility",
+    definition: "Compatibility between components",
   },
   {
-    "name": "Stack Overflow Metrics",
-    "definition": "Taxa de resposta no Stack Overflow"
+    id: 44,
+    name: "Q&A Metrics",
+    definition:
+      "Metrics of question and answer repositories, for example, Stack Overflow response rate",
   },
   {
-    "name": "Digital Independence",
-    "definition": "Capacidade de personalização e evolução independente"
+    id: 45,
+    name: "Digital Independence",
+    definition: "Customization and independent evolution capability",
   },
   {
-    "name": "Long-term Sustainability",
-    "definition": "Sustentabilidade a longo prazo"
+    id: 46,
+    name: "Long-term Sustainability",
+    definition: "Long-term sustainability",
   },
   {
-    "name": "Code Size",
-    "definition": "Tamanho do código do projeto"
-  }
-]
+    id: 47,
+    name: "Code Size",
+    definition: "Project code size",
+  },
+];

@@ -16,7 +16,12 @@ const Warning = ({ message = "", show = false, time = 3000 }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="alert alert-dark" role="alert">
+    <div
+      className="alert alert-warning"
+      role="alert"
+      onClick={() => setIsVisible(false)}
+    >
+      <div className="close-alert">&times;</div>
       {message}
     </div>
   );

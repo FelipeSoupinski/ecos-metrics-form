@@ -3,6 +3,11 @@ body {
   background-color: #282c34;
 }
 
+input {
+  background-color: #282c34 !important;
+  color: white !important;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -94,9 +99,22 @@ button {
   right: 10px;
   width: 250px;
   z-index: 1000;
+  cursor: pointer;
 }
 
-input {
-  background-color: #282c34 !important;
-  color: white !important;
+.close-alert {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+}
+
+.h-70 {
+  min-height: 70vh;
+}
+
+.ml10px {
+  margin-left: 10px !important;
 }
