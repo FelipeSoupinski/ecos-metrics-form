@@ -1,7 +1,7 @@
 export const scenariosData = [
   {
     id: 1,
-    title: "Scenario 1:",
+    title: "Scenario 1 (of 15):",
     text: "Company 1 is a low-code development platform that has been around for 5 years. In the last 6 months, the Developer Relations team has noticed:",
     list: [
       "Decrease in participation in online events",
@@ -13,7 +13,7 @@ export const scenariosData = [
   },
   {
     id: 2,
-    title: "Scenario 2:",
+    title: "Scenario 2 (of 15):",
     text: "Company 2 develops an open-source framework for microservices that gained popularity quickly. In 2 years, the ecosystem has grown to include:",
     list: [
       "More than 200 third-party plugins",
@@ -28,7 +28,7 @@ export const scenariosData = [
   },
   {
     id: 3,
-    title: "Scenario 3:",
+    title: "Scenario 3 (of 15):",
     text: "Company 3 is planning to migrate its popular IDE from a perpetual license model to a subscription-based model with cloud features. The current ecosystem includes:",
     list: [
       "Large base of free and paid plugins",
@@ -43,7 +43,7 @@ export const scenariosData = [
   },
   {
     id: 4,
-    title: "Scenario 4:",
+    title: "Scenario 4 (of 15):",
     text: "Company 4 is an API platform that grew from 1,000 to 50,000 developers in 18 months. Its ecosystem includes:",
     list: [
       "SDKs for 12 different languages",
@@ -59,7 +59,7 @@ export const scenariosData = [
   },
   {
     id: 5,
-    title: "Scenario 5:",
+    title: "Scenario 5 (of 15):",
     text: "Company 5 has maintained a popular front-end framework for 8 years. Recently:",
     list: [
       "New web technologies have emerged strongly",
@@ -74,7 +74,7 @@ export const scenariosData = [
   },
   {
     id: 6,
-    title: "Scenario 6:",
+    title: "Scenario 6 (of 15):",
     text: "Company 6, a NoSQL database company, has seen explosive growth in emerging markets, especially Asia and Latin America. The current ecosystem is:",
     list: [
       "Predominantly in English",
@@ -89,7 +89,7 @@ export const scenariosData = [
   },
   {
     id: 7,
-    title: "Scenario 7:",
+    title: "Scenario 7 (of 15):",
     text: "Company 7 is a microservices framework with high dependency on a few key developers for maintaining critical components. The current situation is:",
     list: [
       "Two of the main maintainers have left the project",
@@ -102,7 +102,7 @@ export const scenariosData = [
   },
   {
     id: 8,
-    title: "Scenario 8:",
+    title: "Scenario 8 (of 15):",
     text: "Company 8 is a NoSQL database system that has been around for 10 years. The ecosystem shows:",
     list: [
       "Performance gradually degrading",
@@ -115,7 +115,7 @@ export const scenariosData = [
   },
   {
     id: 9,
-    title: "Scenario 9:",
+    title: "Scenario 9 (of 15):",
     text: "Company 9 is a front-end development framework showing the following signs:",
     list: [
       "Decrease in response rate on Stack Overflow",
@@ -128,7 +128,7 @@ export const scenariosData = [
   },
   {
     id: 10,
-    title: "Scenario 10:",
+    title: "Scenario 10 (of 15):",
     text: "Company 10 is a cloud computing platform facing the following situation:",
     list: [
       "Discovery of multiple critical vulnerabilities",
@@ -141,7 +141,7 @@ export const scenariosData = [
   },
   {
     id: 11,
-    title: "Scenario 11:",
+    title: "Scenario 11 (of 15):",
     text: "Company 11 is a mobile app development platform presenting the following scenario:",
     list: [
       "Unilateral decisions by the central organization causing dissatisfaction in the community",
@@ -155,7 +155,7 @@ export const scenariosData = [
   },
   {
     id: 12,
-    title: "Scenario 12:",
+    title: "Scenario 12 (of 15):",
     text: "Company 12 is an AI development platform facing:",
     list: [
       "Rising infrastructure and maintenance costs",
@@ -169,7 +169,7 @@ export const scenariosData = [
   },
   {
     id: 13,
-    title: "Scenario 13:",
+    title: "Scenario 13 (of 15):",
     text: "An open-source software development platform seeks to improve the quality and maintainability of its codebase. The challenges encountered are:",
     list: [
       "Exponential growth of lines of code",
@@ -181,7 +181,7 @@ export const scenariosData = [
   },
   {
     id: 14,
-    title: "Scenario 14:",
+    title: "Scenario 14 (of 15):",
     text: "A technology startup seeks to optimize collaboration between globally distributed teams. The challenges are:",
     list: [
       "Coordination between teams in different time zones",
@@ -193,7 +193,7 @@ export const scenariosData = [
   },
   {
     id: 15,
-    title: "Scenario 15:",
+    title: "Scenario 15 (of 15):",
     text: "An open-source software ecosystem seeks to ensure its long-term relevance and adaptability. The challenges include:",
     list: [
       "Maintaining technological independence",

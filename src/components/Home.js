@@ -5,14 +5,9 @@ const Home = () => {
     <div className="home">
       <h2>Application of metrics by Software Ecosystem scenarios.</h2>
       <div className="button-container">
-        <Link to="/form">
-          <button>
-            <span>View tutorial</span>
-          </button>
-        </Link>
-        <Link to="/user-info">
-          <button>
-            <span>Answer questionnaire</span>
+        <Link to="/research-info">
+          <button className="btn btn-lg btn-primary">
+            <span>Let's start</span>
           </button>
         </Link>
       </div>
