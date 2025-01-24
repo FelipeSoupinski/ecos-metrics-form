@@ -46,7 +46,7 @@ const Form = () => {
 
     fetch(`${getServerUrl()}/response`, {
       body: JSON.stringify({
-        email,
+        userEmail: email,
         scenario: currScenario,
         value: response.map((res) => res.id),
       }),
@@ -74,7 +74,7 @@ const Form = () => {
 
     fetch(`${getServerUrl()}/response`, {
       body: JSON.stringify({
-        email,
+        userEmail: email,
         scenario: currScenario,
         value: response.map((res) => res.id),
       }),
