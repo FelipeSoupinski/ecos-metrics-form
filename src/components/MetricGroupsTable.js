@@ -1,11 +1,11 @@
 import { ArrowLeft } from "@styled-icons/bootstrap/ArrowLeft";
-import React from "react";
+import React, { useState } from "react";
 import allMetricGroups from "../files/all-metric-groups";
 import allMetrics from "../files/all-metrics";
-import { useState } from "react";
 
 const MetricGroupsTable = () => {
   const [expandedRow, setExpandedRow] = useState(null);
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
   const data = allMetricGroups;
 
   const handleRowClick = (index) => {
@@ -16,6 +16,31 @@ const MetricGroupsTable = () => {
     const metricIds = metricsString.split(", ").map((id) => id.trim());
     return allMetrics.filter((metric) => metricIds.includes(metric.id));
   };
+
+  const handleSort = (key) => {
+    let direction = 'ascending';
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    } else if (sortConfig.key === key && sortConfig.direction === 'descending') {
+      direction = null;
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const sortedData = React.useMemo(() => {
+    if (sortConfig.key && sortConfig.direction) {
+      return [...data].sort((a, b) => {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    return data;
+  }, [data, sortConfig]);
 
   return (
     <div className="container">
@@ -34,19 +59,27 @@ const MetricGroupsTable = () => {
         </div>
       </div>
       <hr className="white" />
-      {data.length > 0 && (
+      {sortedData.length > 0 && (
         <table className="w-full border-collapse border text-justify my-5">
           <thead>
             <tr>
-              {Object.keys(data[0]).map((header) => (
-                <th key={header} className="border white p-2">
+              {Object.keys(sortedData[0]).map((header) => (
+                <th
+                  key={header}
+                  className="border white p-2 cursor-pointer"
+                  onClick={() => handleSort(header)}
+                >
                   {header?.[0]?.toUpperCase() + header?.slice(1)}
+                  {sortConfig.key === header && (
+                    sortConfig.direction === 'ascending' ? ' 🔼' :
+                    sortConfig.direction === 'descending' ? ' 🔽' : ''
+                  )}
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {data.map((row, index) => (
+            {sortedData.map((row, index) => (
               <React.Fragment key={index}>
                 <tr onClick={() => handleRowClick(index)} className="cursor-pointer">
                   {Object.values(row).map((value, cellIndex) => (
