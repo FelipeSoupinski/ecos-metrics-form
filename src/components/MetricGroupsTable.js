@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import allMetricGroups from "../files/all-metric-groups";
 import allMetrics from "../files/all-metrics";
 
-const MetricGroupsTable = () => {
+const MetricGroupsTable = ({ isModal = false }) => {
   const [expandedRow, setExpandedRow] = useState(null);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
   const data = allMetricGroups;
@@ -18,10 +18,13 @@ const MetricGroupsTable = () => {
   };
 
   const handleSort = (key) => {
-    let direction = 'ascending';
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
-    } else if (sortConfig.key === key && sortConfig.direction === 'descending') {
+    let direction = "ascending";
+    if (sortConfig.key === key && sortConfig.direction === "ascending") {
+      direction = "descending";
+    } else if (
+      sortConfig.key === key &&
+      sortConfig.direction === "descending"
+    ) {
       direction = null;
     }
     setSortConfig({ key, direction });
@@ -31,10 +34,10 @@ const MetricGroupsTable = () => {
     if (sortConfig.key && sortConfig.direction) {
       return [...data].sort((a, b) => {
         if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? -1 : 1;
+          return sortConfig.direction === "ascending" ? -1 : 1;
         }
         if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === 'ascending' ? 1 : -1;
+          return sortConfig.direction === "ascending" ? 1 : -1;
         }
         return 0;
       });
@@ -44,21 +47,23 @@ const MetricGroupsTable = () => {
 
   return (
     <div className="container">
-      <div className="row align-items-center">
-        <div className="col col-2">
-          <button
-            className="btn btn-secondary my-2"
-            onClick={() => window.history.back()}
-          >
-            <ArrowLeft width={13} height={13} />
-            Back
-          </button>
+      {!isModal && (
+        <div className="row align-items-center">
+          <div className="col col-2">
+            <button
+              className="btn btn-secondary my-2"
+              onClick={() => window.history.back()}
+            >
+              <ArrowLeft width={13} height={13} />
+              Back
+            </button>
+          </div>
+          <div className="col col-12">
+            <h2 className="text-center white">Metric groups table</h2>
+          </div>
         </div>
-        <div className="col col-12">
-          <h2 className="text-center white">Metric groups table</h2>
-        </div>
-      </div>
-      <hr className="white" />
+      )}
+      {!isModal && (<hr className="white" />)}
       {sortedData.length > 0 && (
         <table className="w-full border-collapse border text-justify my-5">
           <thead>
@@ -70,10 +75,12 @@ const MetricGroupsTable = () => {
                   onClick={() => handleSort(header)}
                 >
                   {header?.[0]?.toUpperCase() + header?.slice(1)}
-                  {sortConfig.key === header && (
-                    sortConfig.direction === 'ascending' ? ' 🔼' :
-                    sortConfig.direction === 'descending' ? ' 🔽' : ''
-                  )}
+                  {sortConfig.key === header &&
+                    (sortConfig.direction === "ascending"
+                      ? " 🔼"
+                      : sortConfig.direction === "descending"
+                      ? " 🔽"
+                      : "")}
                 </th>
               ))}
             </tr>
@@ -81,7 +88,10 @@ const MetricGroupsTable = () => {
           <tbody>
             {sortedData.map((row, index) => (
               <React.Fragment key={index}>
-                <tr onClick={() => handleRowClick(index)} className="cursor-pointer">
+                <tr
+                  onClick={() => handleRowClick(index)}
+                  className="cursor-pointer"
+                >
                   {Object.values(row).map((value, cellIndex) => (
                     <td key={cellIndex} className="border white p-2">
                       {value}
@@ -90,7 +100,10 @@ const MetricGroupsTable = () => {
                 </tr>
                 {expandedRow === index && (
                   <tr>
-                    <td colSpan={Object.keys(row).length} className="border white p-1">
+                    <td
+                      colSpan={Object.keys(row).length}
+                      className="border white p-1"
+                    >
                       <table className="w-full border-collapse border text-justify my-1">
                         <thead>
                           <tr>
@@ -103,8 +116,12 @@ const MetricGroupsTable = () => {
                           {getMetrics(row.metrics).map((metric) => (
                             <tr key={metric.id}>
                               <td className="border white p-2">{metric.id}</td>
-                              <td className="border white p-2">{metric.name}</td>
-                              <td className="border white p-2">{metric.definition}</td>
+                              <td className="border white p-2">
+                                {metric.name}
+                              </td>
+                              <td className="border white p-2">
+                                {metric.definition}
+                              </td>
                             </tr>
                           ))}
                         </tbody>

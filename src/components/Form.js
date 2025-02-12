@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { healthMetricsGroups } from "../files/health-metrics-groups.js";
 import { scenariosData } from "../files/scenarios-data.js";
 import getServerUrl from "../helpers/get-server-url.js";
+import FixedModalButton from "./FixedModalButton.js";
 import MetricsTable from "./MetricsTable";
 import Scenarios from "./Scenarios.js";
 import Warning from "./Warning.js";
@@ -94,6 +95,7 @@ const Form = () => {
 
   return (
     <div className="form container">
+      <FixedModalButton />
       <Warning message={warningMsg} show={warningControl} />
       <div className="row my-auto">
         <div className="col col-12">
