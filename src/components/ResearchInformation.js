@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom";
 import { ArrowLeft } from "@styled-icons/bootstrap/ArrowLeft";
+import { Link, useNavigate } from "react-router-dom";
 
 const Tutorial = () => {
+  const navigate = useNavigate();
+
+  const isAllMetricsSet = localStorage.getItem("all-metrics") === "true";
+  const isMetricGroupsSet = localStorage.getItem("metric-groups") === "true";
+  const isQuestionnaireDisabled = !isAllMetricsSet || !isMetricGroupsSet;
+
   return (
     <div className="form container">
       <div className="row align-items-center my-auto">
@@ -41,21 +47,29 @@ const Tutorial = () => {
         </div>
         <hr />
         <div className="col col-12 button-container justify-content-center">
-          <Link to="/all-metrics">
+          <Link
+            to="/all-metrics"
+            onClick={() => localStorage.setItem("all-metrics", "true")}
+          >
             <button className="btn btn-lg btn-primary">
               <span>All metrics</span>
             </button>
           </Link>
-          <Link to="/metric-groups">
+          <Link
+            to="/metric-groups"
+            onClick={() => localStorage.setItem("metric-groups", "true")}
+          >
             <button className="btn btn-lg btn-primary">
               <span>Metric groups</span>
             </button>
           </Link>
-          <Link to="/user-info">
-            <button className="btn btn-lg btn-primary">
-              <span>Answer questionnaire</span>
-            </button>
-          </Link>
+          <button
+            className="btn btn-lg btn-primary"
+            disabled={isQuestionnaireDisabled}
+            onClick={() => navigate("/user-info")}
+          >
+            <span>Answer questionnaire</span>
+          </button>
         </div>
       </div>
     </div>
