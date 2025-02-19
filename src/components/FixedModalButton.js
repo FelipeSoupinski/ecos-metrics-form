@@ -15,10 +15,10 @@ const FixedModalButton = () => {
     <>
       <button
         onClick={() => setShowModal(true)}
-        className="btn btn-secondary"
+        className="btn btn-sm btn-secondary"
         style={{
           position: "fixed",
-          top: "20px",
+          top: "10px",
           right: "20px",
           zIndex: 1000,
         }}

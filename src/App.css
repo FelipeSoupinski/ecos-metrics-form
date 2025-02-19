@@ -39,7 +39,7 @@ input {
 .response {
   margin-top: 20px;
   color: white;
-  min-height: 200px;
+  min-height: 140px;
 }
 
 .border-white {
@@ -134,4 +134,21 @@ button {
 
 .fs14px {
   font-size: 14px !important;
+}
+
+.additional-considerations {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #282c34;
+  background-clip: padding-box;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }

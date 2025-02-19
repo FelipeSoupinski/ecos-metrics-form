@@ -1,6 +1,6 @@
 import { ArrowLeft } from "@styled-icons/bootstrap/ArrowLeft";
 import { ArrowRight } from "@styled-icons/bootstrap/ArrowRight";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { healthMetricsGroups } from "../files/health-metrics-groups.js";
 import { scenariosData } from "../files/scenarios-data.js";
@@ -22,6 +22,10 @@ const Form = () => {
   const [warningControl, setWarningControl] = useState(false);
   const [warningMsg, setWarningMsg] = useState("");
 
+  const [additionalConsiderations, setAdditionalConsiderations] = useState("");
+
+  const email = localStorage.getItem("email");
+
   const showWarning = (message) => {
     setWarningMsg(message);
     setWarningControl(true);
@@ -37,19 +41,56 @@ const Form = () => {
     setResponse(response.filter((res) => res.name !== item.name));
   };
 
+  const prevScenarioState = useRef(currScenario);
+
+  useEffect(() => {
+    if (prevScenarioState.current !== currScenario) {
+      prevScenarioState.current = currScenario;
+      fetch(
+        `${getServerUrl()}/response?scenario=${currScenario}&email=${email}`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+        .then((res) => {
+          if (res.status === 200) {
+            res.json().then((data) => {
+              const value = JSON.parse(data?.data?.value ?? "[]");
+              const response =
+                metricsRows.filter((row) => value.includes(row.id)) ?? [];
+              setResponse(response);
+              setAdditionalConsiderations(
+                data?.data?.additionalConsiderations ?? ""
+              );
+            });
+          } else {
+            throw new Error(res.statusText);
+          }
+        })
+        .catch((error) => console.error(error));
+    }
+  }, [currScenario, email, metricsRows]);
+
+  const prevScenario = () => {
+    if (currScenario - 1 >= 0) {
+      const prevScenario = currScenario - 1;
+      setCurrScenario(prevScenario);
+    }
+  };
+
   const nextScenario = () => {
     if (response.length === 0) {
       showWarning("Please select at least one metric group to continue");
       return;
     }
 
-    const email = localStorage.getItem("email");
-
     fetch(`${getServerUrl()}/response`, {
       body: JSON.stringify({
         userEmail: email,
         scenario: currScenario,
         value: response.map((res) => res.id),
+        additionalConsiderations: additionalConsiderations,
       }),
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -57,6 +98,7 @@ const Form = () => {
       .then((res) => {
         if (res.status === 200 && currScenario + 1 < scenariosRows.length) {
           setResponse([]);
+          setAdditionalConsiderations("");
           setCurrScenario(currScenario + 1);
         } else {
           throw new Error(res.statusText);
@@ -71,8 +113,6 @@ const Form = () => {
       return;
     }
 
-    const email = localStorage.getItem("email");
-
     fetch(`${getServerUrl()}/response`, {
       body: JSON.stringify({
         userEmail: email,
@@ -85,6 +125,7 @@ const Form = () => {
       .then((res) => {
         if (res.status === 200) {
           setResponse([]);
+          setAdditionalConsiderations("");
           navigate("/in-the-end");
         } else {
           throw new Error(res.statusText);
@@ -111,7 +152,7 @@ const Form = () => {
           </div>
           <MetricsTable metricsRows={metricsRows} addResponse={addResponse} />
         </div>
-        <div className="col col-12 response d-flex mb-5 border-white">
+        <div className="col col-12 response d-flex mb-3 border-white">
           <div className="row my-auto">
             {response.map((row, index) => (
               <div key={`response-${index}`} className="col text-center">
@@ -129,42 +170,50 @@ const Form = () => {
             ))}
           </div>
         </div>
-        <div className="col col-12 d-flex mb-3 justify-content-end fixed-bottom container">
-          <div className="row mx-auto">
-            <div className="col">
+        <div className="col col-12">
+          <div className="row my-auto">
+            <textarea
+              rows="2"
+              maxLength={500}
+              className="additional-considerations"
+              placeholder="Any additional considerations about this scenario? Write here."
+              value={additionalConsiderations}
+              onChange={(e) => setAdditionalConsiderations(e.target.value)}
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div className="col col-12 d-flex mb-3 justify-content-end fixed-bottom container">
+        <div className="row mx-auto">
+          <div className="col">
+            <button
+              className="btn btn-large btn-light d-flex align-items-center"
+              title="previous"
+              onClick={prevScenario}
+              disabled={currScenario === 0}
+            >
+              <ArrowLeft width={13} height={13} /> <span>Back</span>
+            </button>
+          </div>
+          <div className="col">
+            {currScenario < scenariosRows.length - 1 && (
               <button
                 className="btn btn-large btn-light d-flex align-items-center"
-                title="previous"
-                onClick={() => {
-                  if (currScenario - 1 >= 0) {
-                    setCurrScenario(currScenario - 1);
-                  }
-                }}
-                disabled={currScenario === 0}
+                title="next"
+                onClick={nextScenario}
               >
-                <ArrowLeft width={13} height={13} /> <span>Back</span>
+                <span>Next</span> <ArrowRight width={13} height={13} />
               </button>
-            </div>
-            <div className="col">
-              {currScenario < scenariosRows.length - 1 && (
-                <button
-                  className="btn btn-large btn-light d-flex align-items-center"
-                  title="next"
-                  onClick={nextScenario}
-                >
-                  <span>Next</span> <ArrowRight width={13} height={13} />
-                </button>
-              )}
-              {currScenario === scenariosRows.length - 1 && (
-                <button
-                  className="btn btn-large btn-success d-flex align-items-center"
-                  title="next"
-                  onClick={finish}
-                >
-                  <span>Finish</span> <ArrowRight width={13} height={13} />
-                </button>
-              )}
-            </div>
+            )}
+            {currScenario === scenariosRows.length - 1 && (
+              <button
+                className="btn btn-large btn-success d-flex align-items-center"
+                title="next"
+                onClick={finish}
+              >
+                <span>Finish</span> <ArrowRight width={13} height={13} />
+              </button>
+            )}
           </div>
         </div>
       </div>

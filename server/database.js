@@ -23,7 +23,8 @@ db.serialize(() => {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             scenario INTEGER NOT NULL,
             userEmail TEXT NOT NULL,
-            value TEXT NOT NULL
+            value TEXT NOT NULL,
+            additionalConsiderations TEXT
         )`);
 });
 
