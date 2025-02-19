@@ -18,7 +18,7 @@ const AllMetricsTable = () => {
           </button>
         </div>
         <div className="col col-12">
-          <h2 className="text-center white">All metrics table</h2>
+          <h3 className="text-center white">All metrics table</h3>
         </div>
       </div>
       <hr className="white" />

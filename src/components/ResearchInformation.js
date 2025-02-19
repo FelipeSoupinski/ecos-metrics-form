@@ -21,7 +21,7 @@ const Tutorial = () => {
           </button>
         </div>
         <div className="col col-12 mb-3">
-          <h2>Research information</h2>
+          <h3>Research information</h3>
         </div>
         <hr />
         <div className="col col-12 text-justify my-3">

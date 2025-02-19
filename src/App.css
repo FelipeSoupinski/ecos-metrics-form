@@ -1,6 +1,7 @@
 body {
   text-align: center;
   background-color: #282c34;
+  font-size: 14px;
 }
 
 input {
@@ -123,11 +124,14 @@ button {
   cursor: pointer;
 }
 
-
 .metric-row:hover {
   background-color: #2e2f33;
 }
 
 .selected {
   background-color: #1e1f21;
+}
+
+.fs14px {
+  font-size: 14px !important;
 }

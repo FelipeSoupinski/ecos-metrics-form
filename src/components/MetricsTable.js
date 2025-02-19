@@ -4,7 +4,7 @@ const MetricsTable = ({ metricsRows, addResponse }) => {
       {metricsRows.map((row, index) => (
         <div key={`response-${index}`} className="col text-center">
           <button
-            className="btn btn-small btn-text white"
+            className="btn btn-small btn-text white fs14px"
             data-toggle="tooltip"
             data-placement="top"
             title={row.definition}

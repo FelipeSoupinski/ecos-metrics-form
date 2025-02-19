@@ -68,7 +68,7 @@ const MetricGroupsTable = ({ isModal = false }) => {
             </button>
           </div>
           <div className="col col-12">
-            <h2 className="text-center white">Metric Groups</h2>
+            <h3 className="text-center white">Metric Groups</h3>
           </div>
         </div>
       )}

@@ -21,7 +21,7 @@ const Scenarios = ({ scenarioIndex = 0, scenarios }) => {
   return (
     <>
       <p className="text-justify">
-        <b>{currScenario?.title}</b> {currScenario?.text}
+        <b>{currScenario?.title}</b> {currScenario?.text} Current challenges include:
       </p>
       <div className="text-justify">
         <span>{formatTextList(currScenario?.list)}</span>

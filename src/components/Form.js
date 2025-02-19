@@ -104,10 +104,10 @@ const Form = () => {
         </div>
         <div className="col col-12 mt-3">
           <div className="text-left">
-            <h6>
+            <b>
               Select the groups of metrics that you believe can help measure the
               scenario described above:
-            </h6>
+            </b>
           </div>
           <MetricsTable metricsRows={metricsRows} addResponse={addResponse} />
         </div>
@@ -116,7 +116,7 @@ const Form = () => {
             {response.map((row, index) => (
               <div key={`response-${index}`} className="col text-center">
                 <button
-                  className="btn btn-small btn-text white"
+                  className="btn btn-small btn-text white fs14px"
                   data-toggle="tooltip"
                   data-placement="top"
                   title={row.definition}
