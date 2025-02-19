@@ -2,7 +2,7 @@ export const scenariosData = [
   {
     id: 1,
     title: "Scenario 1 (of 15):",
-    text: "Company 1 is a low-code development platform that has been around for 5 years. In the last 6 months, the Developer Relations team has noticed:",
+    text: "Company 1 is a mature low-code development platform experiencing significant challenges in developer engagement and ecosystem vitality. After five years in the market, the platform's Developer Relations team has detected critical signals of potential technological and community decline during the past two quarters, which could threaten its market positioning and future growth.",
     list: [
       "Decrease in participation in online events",
       "Fewer contributions to documentation",
@@ -14,7 +14,7 @@ export const scenariosData = [
   {
     id: 2,
     title: "Scenario 2 (of 15):",
-    text: "Company 2 develops an open-source framework for microservices that gained popularity quickly. In 2 years, the ecosystem has grown to include:",
+    text: "Company 2 has developed an open-source microservices framework that experienced rapid adoption, creating a complex ecosystem with multiple implementations and expanding functionality. However, this rapid growth has led to significant fragmentation and potential sustainability challenges that could undermine the framework's long-term coherence and developer trust.",
     list: [
       "More than 200 third-party plugins",
       "Multiple versions being maintained simultaneously",
@@ -29,7 +29,7 @@ export const scenariosData = [
   {
     id: 3,
     title: "Scenario 3 (of 15):",
-    text: "Company 3 is planning to migrate its popular IDE from a perpetual license model to a subscription-based model with cloud features. The current ecosystem includes:",
+    text: "Company 3 is strategically repositioning its popular Integrated Development Environment (IDE) from a traditional perpetual licensing model to a modern, cloud-enabled subscription framework. This transformation presents a critical juncture that could potentially reshape its relationship with an established developer community, presenting both significant opportunities and substantial risks.",
     list: [
       "Large base of free and paid plugins",
       "Active community of extension developers",
@@ -44,7 +44,7 @@ export const scenariosData = [
   {
     id: 4,
     title: "Scenario 4 (of 15):",
-    text: "Company 4 is an API platform that grew from 1,000 to 50,000 developers in 18 months. Its ecosystem includes:",
+    text: "Company 4 represents a remarkable case of exponential growth in the API platform space, expanding from 1,000 to 50,000 developers in just 18 months. While this rapid scaling demonstrates significant market validation, it has also exposed critical challenges in maintaining consistent quality, support, and developer experience across a complex, multilingual ecosystem.",
     list: [
       "SDKs for 12 different languages",
       "Integration marketplace",
@@ -60,7 +60,7 @@ export const scenariosData = [
   {
     id: 5,
     title: "Scenario 5 (of 15):",
-    text: "Company 5 has maintained a popular front-end framework for 8 years. Recently:",
+    text: "Company 5 manages a front-end framework with an eight-year legacy, now confronting the complex dynamics of technological evolution and generational shift in developer preferences. The platform faces the delicate challenge of balancing its substantial existing user base with the need to remain relevant and attractive to emerging developer talent.",
     list: [
       "New web technologies have emerged strongly",
       "Younger developers prefer more modern alternatives",
@@ -75,7 +75,7 @@ export const scenariosData = [
   {
     id: 6,
     title: "Scenario 6 (of 15):",
-    text: "Company 6, a NoSQL database company, has seen explosive growth in emerging markets, especially Asia and Latin America. The current ecosystem is:",
+    text: "Company 6, a NoSQL database provider, has achieved remarkable growth in emerging markets, particularly in Asia and Latin America. However, this global expansion has revealed profound challenges related to cultural adaptation, linguistic diversity, and the need for a more inclusive and regionally sensitive approach to community engagement and product development.",
     list: [
       "Predominantly in English",
       "Centered in North American and European communities",
@@ -90,7 +90,7 @@ export const scenariosData = [
   {
     id: 7,
     title: "Scenario 7 (of 15):",
-    text: "Company 7 is a microservices framework with high dependency on a few key developers for maintaining critical components. The current situation is:",
+    text: "Company 7's microservices framework is experiencing a critical leadership and knowledge transfer crisis, characterized by the departure of key maintainers and a resultant knowledge bottleneck. This situation poses significant risks to the project's continuity, community confidence, and potential long-term survival.",
     list: [
       "Two of the main maintainers have left the project",
       "Knowledge about critical parts of the architecture was centralized",
@@ -103,7 +103,7 @@ export const scenariosData = [
   {
     id: 8,
     title: "Scenario 8 (of 15):",
-    text: "Company 8 is a NoSQL database system that has been around for 10 years. The ecosystem shows:",
+    text: "Company 8's decade-old NoSQL database system is confronting an existential challenge of technological obsolescence. The platform's architectural limitations and inability to efficiently adapt to contemporary technological requirements are creating significant pressure from increasingly sophisticated market alternatives.",
     list: [
       "Performance gradually degrading",
       "Difficulty keeping up with modern security requirements",
@@ -116,7 +116,7 @@ export const scenariosData = [
   {
     id: 9,
     title: "Scenario 9 (of 15):",
-    text: "Company 9 is a front-end development framework showing the following signs:",
+    text: "Company 9's front-end development framework is displaying alarming symptoms of community disengagement and potential technological stagnation. These indicators suggest a critical need for strategic intervention to revitalize developer interest and maintain the platform's competitive positioning.",
     list: [
       "Decrease in response rate on Stack Overflow",
       "Reduction in the number of new contributors",
@@ -129,7 +129,7 @@ export const scenariosData = [
   {
     id: 10,
     title: "Scenario 10 (of 15):",
-    text: "Company 10 is a cloud computing platform facing the following situation:",
+    text: "Company 10's cloud computing platform is experiencing a severe crisis of security and credibility, with multiple critical vulnerabilities threatening its market reputation and enterprise customer confidence. The situation demands immediate, comprehensive strategic response to mitigate potential long-term damage.",
     list: [
       "Discovery of multiple critical vulnerabilities",
       "Significant delays in security updates",
@@ -142,7 +142,7 @@ export const scenariosData = [
   {
     id: 11,
     title: "Scenario 11 (of 15):",
-    text: "Company 11 is a mobile app development platform presenting the following scenario:",
+    text: "Company 11's mobile app development platform is confronting significant governance challenges that are eroding community trust and potentially compromising its collaborative ecosystem. The platform's centralized decision-making approach is creating increasing tension between organizational objectives and community expectations.",
     list: [
       "Unilateral decisions by the central organization causing dissatisfaction in the community",
       "Lack of transparency in roadmap changes",
@@ -156,7 +156,7 @@ export const scenariosData = [
   {
     id: 12,
     title: "Scenario 12 (of 15):",
-    text: "Company 12 is an AI development platform facing:",
+    text: "Company 12's AI development platform is navigating a complex economic landscape, facing escalating operational challenges and diminishing financial sustainability. The platform must urgently reassess its monetization strategy and value proposition to remain competitive in an increasingly crowded and cost-sensitive market.",
     list: [
       "Rising infrastructure and maintenance costs",
       "Difficulty monetizing premium services",
@@ -170,7 +170,7 @@ export const scenariosData = [
   {
     id: 13,
     title: "Scenario 13 (of 15):",
-    text: "An open-source software development platform seeks to improve the quality and maintainability of its codebase. The challenges encountered are:",
+    text: "An open-source software development platform is proactively addressing critical technical sustainability challenges, recognizing that managing code complexity and maintaining high-quality standards are essential for long-term project viability and developer engagement.",
     list: [
       "Exponential growth of lines of code",
       "Increase in project complexity",
@@ -182,7 +182,7 @@ export const scenariosData = [
   {
     id: 14,
     title: "Scenario 14 (of 15):",
-    text: "A technology startup seeks to optimize collaboration between globally distributed teams. The challenges are:",
+    text: "A technology startup is strategically tackling the multifaceted challenges of global team collaboration, seeking to optimize productivity, communication, and resource utilization across geographically distributed development teams.",
     list: [
       "Coordination between teams in different time zones",
       "Maximizing collaborative productivity",
@@ -194,7 +194,7 @@ export const scenariosData = [
   {
     id: 15,
     title: "Scenario 15 (of 15):",
-    text: "An open-source software ecosystem seeks to ensure its long-term relevance and adaptability. The challenges include:",
+    text: "An open-source software ecosystem is proactively addressing the complex challenge of maintaining technological relevance and adaptability in a rapidly evolving digital landscape, balancing innovation with platform stability and community continuity.",
     list: [
       "Maintaining technological independence",
       "Ensuring compatibility between components",
