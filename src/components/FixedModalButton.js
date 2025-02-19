@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MetricGroupsTable from "./MetricGroupsTable";
+import { Close } from "styled-icons/evaicons-solid";
 
 const FixedModalButton = () => {
   const [showModal, setShowModal] = useState(false);
@@ -62,7 +63,7 @@ const FixedModalButton = () => {
                 right: "32px",
               }}
             >
-              Close X
+              Close <Close color="white" height={15} width={15} />
             </button>
             <MetricGroupsTable isModal />
           </div>

@@ -122,3 +122,12 @@ button {
 .cursor-pointer {
   cursor: pointer;
 }
+
+
+.metric-row:hover {
+  background-color: #2e2f33;
+}
+
+.selected {
+  background-color: #1e1f21;
+}
