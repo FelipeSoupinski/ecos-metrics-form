@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.SERVER_PORT;
 const domain = process.env.SERVER_DOMAIN;
 const db = require("./database");
+const path = require("node:path");
 const cors = require("cors");
 
 app.use(express.json());
@@ -88,6 +89,12 @@ app.post("/response", (req, res) => {
       }
     }
   );
+});
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(port, () => {
