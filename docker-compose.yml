@@ -3,6 +3,12 @@ volumes:
     name: ecos_db_data
 services:
   server:
-    build: ./docker/Dockerfile
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      - .env
     volumes:
       - db_data:/app/server/db
+    ports:
+      - "5000:5000"
