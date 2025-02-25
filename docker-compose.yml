@@ -3,6 +3,7 @@ volumes:
     name: ecos_db_data
 services:
   server:
+    image: registry.git.ledes.net/felipe_soupinski/ecos-metrics:latest
     build:
       context: .
       dockerfile: ./docker/Dockerfile
