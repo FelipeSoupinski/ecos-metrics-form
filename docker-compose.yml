@@ -1,0 +1,8 @@
+volumes:
+  db_data:
+    name: ecos_db_data
+services:
+  server:
+    build: ./docker/Dockerfile
+    volumes:
+      - db_data:/app/server/db
