@@ -9,16 +9,6 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  db.all("SELECT * FROM user", [], (err, rows) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
-    res.json({ data: rows });
-  });
-});
-
 app.post("/user", (req, res) => {
   const { name, email, wantResults } = req.body;
   db.run(
