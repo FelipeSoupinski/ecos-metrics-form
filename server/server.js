@@ -6,95 +6,56 @@ const domain = process.env.SERVER_DOMAIN;
 const db = require("./database");
 const path = require("node:path");
 const cors = require("cors");
+const { createUser, getResponse, upsertResponse } = require("./repository");
 
 app.use(express.json());
 app.use(cors());
 
-app.post("/user", (req, res) => {
-  const { name, email, wantResults } = req.body;
-  db.run(
-    "INSERT INTO user (name, email, wantResults) VALUES (?, ?, ?)",
-    [name, email, wantResults],
-    (err, rows) => {
-      if (err) {
-        res.status(400).json({ error: err.message });
-        return;
-      }
-      res.json({ data: rows });
+app.get("/user", (req, res) => {
+  db.all("SELECT * FROM user", [], (err, rows) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
     }
-  );
+    res.json({ data: rows });
+  });
+});
+
+app.post("/user", (req, res) => {
+  createUser(req.body, (err, rows) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({ data: rows });
+  });
 });
 
 app.get("/response", (req, res) => {
   const { email, scenario } = req.query;
-  db.get(
-    "SELECT * FROM response WHERE userEmail = ? AND scenario = ? LIMIT 1",
-    [email, scenario],
-    (err, row) => {
-      if (err) {
-        res.status(400).json({ error: err.message });
-        return;
-      }
-      res.json({ data: row });
+  getResponse(email, scenario, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
     }
-  );
+    res.json({ data: row });
+  });
 });
 
 app.post("/response", (req, res) => {
-  const { scenario, userEmail, value, additionalConsiderations } = req.body;
-
-  db.get(
-    "SELECT * FROM response WHERE scenario = ? AND userEmail = ?",
-    [scenario, userEmail],
-    (err, row) => {
-      if (err) {
-        res.status(400).json({ error: err.message });
-        return;
-      }
-
-      if (row) {
-        db.run(
-          "UPDATE response SET value = ?, additionalConsiderations = ? WHERE scenario = ? AND userEmail = ?",
-          [
-            JSON.stringify(value),
-            additionalConsiderations,
-            scenario,
-            userEmail,
-          ],
-          (err) => {
-            if (err) {
-              res.status(400).json({ error: err.message });
-              return;
-            }
-            res.json({ message: "Response updated successfully" });
-          }
-        );
-      } else {
-        db.run(
-          "INSERT INTO response (scenario, userEmail, value, additionalConsiderations) VALUES (?, ?, ?, ?)",
-          [
-            scenario,
-            userEmail,
-            JSON.stringify(value),
-            additionalConsiderations,
-          ],
-          (err) => {
-            if (err) {
-              res.status(400).json({ error: err.message });
-              return;
-            }
-            res.json({ message: "Response added successfully" });
-          }
-        );
-      }
+  upsertResponse(req.body, (err) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
     }
-  );
+    res.json({ message: "Response updated successfully" });
+  });
 });
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, "build")));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 app.listen(port, () => {

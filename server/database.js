@@ -16,7 +16,13 @@ db.serialize(() => {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
       email TEXT NOT NULL UNIQUE,
-      wantResults BOOLEAN NOT NULL
+      wantResults BOOLEAN NOT NULL,
+      currentPosition TEXT NOT NULL,
+      educationLevel TEXT NOT NULL,
+      xpMonths TEXT NOT NULL,
+      country TEXT NOT NULL,
+      gender TEXT,
+      degreeArea TEXT
     )`);
 
   db.run(`CREATE TABLE IF NOT EXISTS response (

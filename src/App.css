@@ -136,6 +136,10 @@ button {
   font-size: 14px !important;
 }
 
+.fs12px {
+  font-size: 12px !important;
+}
+
 .additional-considerations {
   display: block;
   width: 100%;
