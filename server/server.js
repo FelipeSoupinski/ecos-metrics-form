@@ -3,23 +3,12 @@ const express = require("express");
 const app = express();
 const port = process.env.SERVER_PORT;
 const domain = process.env.SERVER_DOMAIN;
-const db = require("./database");
 const path = require("node:path");
 const cors = require("cors");
 const { createUser, getResponse, upsertResponse } = require("./repository");
 
 app.use(express.json());
 app.use(cors());
-
-app.get("/user", (req, res) => {
-  db.all("SELECT * FROM user", [], (err, rows) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
-    res.json({ data: rows });
-  });
-});
 
 app.post("/user", (req, res) => {
   createUser(req.body, (err, rows) => {

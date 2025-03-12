@@ -5,11 +5,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Warning from "./Warning";
 import getServerUrl from "../helpers/get-server-url";
+import ConsentFormCheckboxModal from "./ConsentFormCheckboxModal";
 
 const UserInfo = () => {
   const navigate = useNavigate();
 
   const [agree, setAgree] = useState(true);
+  const [consentForm, setConsentForm] = useState(true);
 
   const [form, setForm] = useState({
     name: "",
@@ -48,6 +50,11 @@ const UserInfo = () => {
   const next = () => {
     if (!agree) {
       showWarning("You must agree to participate in the research.");
+      return;
+    }
+
+    if (!consentForm) {
+      showWarning("You must accept the Free and Informed Consent Form.");
       return;
     }
 
@@ -269,6 +276,31 @@ const UserInfo = () => {
                   >
                     I want to receive the research results.
                   </label>
+                </div>
+              </div>
+              <div className="col col-6">
+                <div className="input-group">
+                  <input
+                    id="consent-form"
+                    type="checkbox"
+                    className="form-check-input"
+                    defaultChecked
+                    onChange={(event) =>
+                      setConsentForm(Boolean(event.target.checked))
+                    }
+                  />
+                  <label
+                    htmlFor="consent-form"
+                    className="form-check-label ml10px"
+                  >
+                    I declare that I have read and accept the Free and Informed
+                    Consent Form.
+                  </label>
+                </div>
+              </div>
+              <div className="col col-6">
+                <div className="input-group">
+                  <ConsentFormCheckboxModal />
                 </div>
               </div>
               <div className="d-flex justify-content-between mt-5">
