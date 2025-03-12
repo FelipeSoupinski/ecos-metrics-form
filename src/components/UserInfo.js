@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Warning from "./Warning";
 import getServerUrl from "../helpers/get-server-url";
-import ConsentFormCheckboxModal from "./ConsentFormCheckboxModal";
+import ConsentFormModal from "./ConsentFormModal";
 
 const UserInfo = () => {
   const navigate = useNavigate();
@@ -300,7 +300,7 @@ const UserInfo = () => {
               </div>
               <div className="col col-6">
                 <div className="input-group">
-                  <ConsentFormCheckboxModal />
+                  <ConsentFormModal />
                 </div>
               </div>
               <div className="d-flex justify-content-between mt-5">
