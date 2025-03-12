@@ -9,4 +9,4 @@ RUN npm install
 
 VOLUME [ "/app/server/db" ]
 
-CMD [ "node", "server.js" ]
+CMD [ "node", "server/server.js" ]
