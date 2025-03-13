@@ -2,5 +2,6 @@
 !docker/*
 !package.json
 !package-lock.json
-!server
+!server/*
+server/db/*
 !build
