@@ -5,7 +5,7 @@ const port = process.env.SERVER_PORT;
 const domain = process.env.SERVER_DOMAIN;
 const path = require("node:path");
 const cors = require("cors");
-const { createUser, getResponse, upsertResponse } = require("./repository");
+const { createUser, getResponse, upsertResponse } = require("./repository.js");
 
 app.use(express.json());
 app.use(cors());
