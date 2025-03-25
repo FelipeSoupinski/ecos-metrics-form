@@ -15,45 +15,41 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/download-users", (req, res) => {
-  const { token } = req.params;
+  const { token } = req.query;
 
   if (token !== process.env.REPORT_TOKEN) {
     res.status(401).json({ error: "Unauthorized" });
     return;
   }
 
-  getAllUsers()
-    .then((rows) => {
-      const fileName = "users.json";
-      const jsonContent = JSON.stringify(rows, null, 2);
-      res.setHeader("Content-Disposition", `attachment; filename=${fileName}`);
-      res.setHeader("Content-Type", "application/json");
-      res.send(jsonContent);
-    })
-    .catch((err) => {
-      if (err) res.status(500).json({ error: err.message });
-    });
+  getAllUsers((err, rows) => {
+    if (err) res.status(500).json({ error: err.message });
+    
+    const fileName = "users.json";
+    const jsonContent = JSON.stringify(rows, null, 2);
+    res.setHeader("Content-Disposition", `attachment; filename=${fileName}`);
+    res.setHeader("Content-Type", "application/json");
+    res.send(jsonContent);
+  });
 });
 
 app.get("/download-responses", (req, res) => {
-  const { token } = req.params;
+  const { token } = req.query;
 
   if (token !== process.env.REPORT_TOKEN) {
     res.status(401).json({ error: "Unauthorized" });
     return;
   }
 
-  getAllResponses()
-    .then((rows) => {
-      const fileName = "responses.json";
-      const jsonContent = JSON.stringify(rows, null, 2);
-      res.setHeader("Content-Disposition", `attachment; filename=${fileName}`);
-      res.setHeader("Content-Type", "application/json");
-      res.send(jsonContent);
-    })
-    .catch((err) => {
-      if (err) res.status(500).json({ error: err.message });
-    });
+  getAllResponses((err, rows) => {
+    if (err) res.status(500).json({ error: err.message });
+
+    const fileName = "responses.json";
+    const jsonContent = JSON.stringify(rows, null, 2);
+    res.setHeader("Content-Disposition", `attachment; filename=${fileName}`);
+    res.setHeader("Content-Type", "application/json");
+    res.send(jsonContent);
+  });
 });
 
 app.post("/user", (req, res) => {
