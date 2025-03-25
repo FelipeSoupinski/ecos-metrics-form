@@ -87,6 +87,7 @@ const UserInfo = () => {
         <div className="row my-auto">
           <div className="col col-12">
             <h2>User Information</h2>
+            {JSON.stringify(form)}
             <hr />
           </div>
           <div className="col col-12 mt-1">
@@ -107,7 +108,7 @@ const UserInfo = () => {
                     type="text"
                     className="form-control"
                     id="name"
-                    onBlur={(event) => updateForm("name", event.target.value)}
+                    onChange={(event) => updateForm("name", event.target.value)}
                     maxLength={256}
                     required
                   />
@@ -122,7 +123,7 @@ const UserInfo = () => {
                     type="email"
                     className="form-control"
                     id="email"
-                    onBlur={(event) => updateForm("email", event.target.value)}
+                    onChange={(event) => updateForm("email", event.target.value)}
                     maxLength={256}
                     required
                   />
@@ -138,7 +139,7 @@ const UserInfo = () => {
                     type="text"
                     className="form-control"
                     id="current-position"
-                    onBlur={(event) =>
+                    onChange={(event) =>
                       updateForm("currentPosition", event.target.value)
                     }
                     maxLength={64}
@@ -179,7 +180,7 @@ const UserInfo = () => {
                     type="text"
                     className="form-control"
                     id="degree-area"
-                    onBlur={(event) =>
+                    onChange={(event) =>
                       updateForm("degreeArea", event.target.value)
                     }
                     maxLength={64}
@@ -189,14 +190,14 @@ const UserInfo = () => {
               <div className="col col-6">
                 <div className="input-group mt-3">
                   <label htmlFor="experience" className="input-group">
-                    How long time do you work with software ecosystems (in
-                    months, only numbers)? *
+                    How long time do you work (as a researcher/DevRel/etc) with
+                    software ecosystems (in months, only numbers)? *
                   </label>
                   <input
                     type="number"
                     className="form-control"
                     id="experience"
-                    onBlur={(event) =>
+                    onChange={(event) =>
                       updateForm("xpMonths", event.target.value)
                     }
                     maxLength={8}
@@ -214,7 +215,7 @@ const UserInfo = () => {
                     type="text"
                     className="form-control"
                     id="country"
-                    onBlur={(event) =>
+                    onChange={(event) =>
                       updateForm("country", event.target.value)
                     }
                     required
@@ -235,7 +236,9 @@ const UserInfo = () => {
                     type="text"
                     className="form-control"
                     id="gender"
-                    onBlur={(event) => updateForm("gender", event.target.value)}
+                    onChange={(event) =>
+                      updateForm("gender", event.target.value)
+                    }
                     required
                   />
                 </div>
@@ -247,9 +250,7 @@ const UserInfo = () => {
                     type="checkbox"
                     className="form-check-input"
                     defaultChecked
-                    onChange={(event) =>
-                      setAgree(Boolean(event.target.checked))
-                    }
+                    onChange={(event) => setAgree(Boolean(event.target.checked))}
                   />
                   <label
                     htmlFor="participate-research"
@@ -285,7 +286,7 @@ const UserInfo = () => {
                     type="checkbox"
                     className="form-check-input"
                     defaultChecked
-                    onChange={(event) =>
+                    onClick={(event) =>
                       setConsentForm(Boolean(event.target.checked))
                     }
                   />
