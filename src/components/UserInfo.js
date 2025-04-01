@@ -87,7 +87,6 @@ const UserInfo = () => {
         <div className="row my-auto">
           <div className="col col-12">
             <h2>User Information</h2>
-            {JSON.stringify(form)}
             <hr />
           </div>
           <div className="col col-12 mt-1">
